@@ -16,7 +16,7 @@ services:
     # 卷映射
     volumes:
       # 项目代码映射
-      - /home/nvidia/Documents/DeepSearchAgent-Demo:/app
+      - /home/nvidia/Desktop/DeepSearchAgent-Demo:/app
       # 模型 / 数据目录映射
       - /home/nvidia/Desktop/localmodels:/models
       - /home/nvidia/Desktop/localdatasets:/datasets
