@@ -28,7 +28,10 @@ class OpenAILLM(BaseLLM):
         super().__init__(api_key, model_name)
         
         # 初始化OpenAI客户端
-        self.client = OpenAI(api_key=self.api_key)
+        self.client = OpenAI(
+            api_key=self.api_key,
+            base_url="http://192.168.1.6:1128/v1"
+        )
         self.default_model = model_name or self.get_default_model()
     
     def get_default_model(self) -> str:

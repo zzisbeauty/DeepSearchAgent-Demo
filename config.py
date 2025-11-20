@@ -11,9 +11,11 @@ OPENAI_API_KEY = "your_openai_api_key_here"
 TAVILY_API_KEY = "your_tavily_api_key_here"
 
 # 配置参数
-DEFAULT_LLM_PROVIDER = "deepseek"
+# DEFAULT_LLM_PROVIDER = "deepseek"
+DEFAULT_LLM_PROVIDER = "openai"
+OPENAI_MODEL = "/localmodels/Qwen3-4B-Thinking-2507" # "gpt-4o-mini"
+
 DEEPSEEK_MODEL = "deepseek-chat"
-OPENAI_MODEL = "gpt-4o-mini"
 
 MAX_REFLECTIONS = 2
 SEARCH_RESULTS_PER_QUERY = 3

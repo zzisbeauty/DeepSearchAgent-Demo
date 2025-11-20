@@ -1,0 +1,48 @@
+services:
+  deepsearch-agent:
+    image: miniconda:std
+    container_name: deepsearch-agent-demo
+    
+    # 重启策略 - 开机自动启动(推荐)
+    # restart: always
+    # restart: unless-stopped  # 开机自动启动,除非手动停止
+    restart: "no"            # 不自动启动(默认)
+    # restart: on-failure      # 仅在失败时重启
+    
+    # 端口映射
+    ports:
+      - "2518:2518"
+    
+    # 卷映射
+    volumes:
+      # 项目代码映射
+      - /home/nvidia/Documents/DeepSearchAgent-Demo:/app
+      # 模型 / 数据目录映射
+      - /home/nvidia/Desktop/localmodels:/models
+      - /home/nvidia/Desktop/localdatasets:/datasets
+      # 缓存和临时文件映射
+      - /home/nvidia/Desktop/cachedatas/DeepSearchAgent-Demo:/cache
+      - /home/nvidia/.cache/huggingface:/root/.cache/huggingface
+      - /home/nvidia/.cache/modelscope:/root/.cache/modelscope
+      - /home/nvidia/.cache/torch:/root/.cache/torch
+    
+    # 环境变量
+    environment:
+      - PYTHONUNBUFFERED=1
+      - HF_HOME=/cache/huggingface
+      - MODELSCOPE_CACHE=/cache/modelscope
+      - TRANSFORMERS_CACHE=/root/.cache/huggingface/transformers
+
+    # 工作目录
+    working_dir: /app
+    
+    # 网络模式（允许容器访问宿主机和被宿主机访问）
+    network_mode: bridge
+    
+    # 保持容器运行
+    stdin_open: true
+    tty: true
+    
+    # 启动命令（根据实际项目修改）
+    # command: python main.py
+    command: /bin/bash
